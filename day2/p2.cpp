@@ -22,9 +22,24 @@ int main()
 
     auto invalid = [](std::string const &s)
     {
-        return s.size() % 2 == 0 &&
-               s.substr(0, s.size() / 2) ==
-                   s.substr(s.size() / 2);
+        bool valid = true;
+        for (int i = 1; i <= s.size() / 2; ++i){
+            std::string sub_s = s.substr(0, i);
+            if (s.size() % sub_s.size() == 0) {
+                valid = true;
+                int j = 0;
+                while (j + sub_s.size() <= s.size() && valid){
+                    if (s.substr(j, sub_s.size()) != sub_s){
+                        valid = false;
+                    }
+                    j += sub_s.size();
+                }
+                if (valid) {
+                    return true;
+                }
+            }
+        }
+        return false;
     };
 
     while (std::getline(line_stream, token, ','))
@@ -56,4 +71,5 @@ int main()
 
     std::cout << ans << "\n";
 }
+
 
