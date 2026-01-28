@@ -25,7 +25,7 @@ int main() {
       Point a = points[i];
       Point b = points[j];
 
-      long long area = ((std::llabs(a.x - b.x) +1) * (std::llabs(a.y - b.y) +1));
+      long long area = ((std::abs(a.x - b.x) +1) * (std::abs(a.y - b.y) +1));
 
       ans = std::max(ans, area);
     }
